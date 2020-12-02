@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>fs = require('fs')
+    var readd = document.getElementById("readd");
+    readd.onclick= function(){
+        var key= document.getElementById("keyread")?.value;
+        filename= key.concat(".json");
+        var loc = '../data/';
+        fileloc = loc.concat(filename);
+        fs.readFile(fileloc,"utf8",(err,cont)=>{
+            if(err){
+                document.getElementById("errorMessageRead").innerHTML="No such key exists";
+            }else{
+                var content = JSON.parse(cont);
+                if(content?.life>0){
+                    var dt = content.date;
+                    dt.setSeconds( dt.getSeconds() + 10 );
+                    var dat = new Date();
+                    if(dat>dt){
+                        
+                    }
+                }
+                }
+    
+    });}</script>
+<body>
+    <h1>Read Operation</h1>
+    <div>Key<span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span>
+         <input type="text" id = "keyread"></div>
+    <div>&nbsp;</div>
+    <button id="readd">Read Value</button><span>&nbsp;</span><button><a href="../../home.html">Back to Home</a></button>
+    <div>&nbsp;</div>
+    <div id = "successMessageRead"></div>
+        <div>&nbsp;</div>
+    <div id = "errorMessageRead"></div>
+</body>
+</html>
